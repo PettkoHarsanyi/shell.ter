@@ -4,7 +4,6 @@ import { WalkDto } from './dto/walk.dto';
 import { Roles } from '../auth/roles';
 import { User, UserRole } from '../users/entity/user';
 import { UserParam } from '../auth/user-param.decorator';
-import { UserDto } from '../users/dto/user.dto';
 import { AllowAnonymous } from '../auth/allow-anonymous';
 
 @Controller('walks')
