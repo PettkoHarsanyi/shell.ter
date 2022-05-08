@@ -5,9 +5,10 @@ import { Walk } from "./src/walks/entities/walk";
 
 export default {
     entities: [Dog, Walk, User], // no need for `entitiesTs` this way
-    dbName: 'shellter.sqlite3',
+    dbName: (process.env.seed ? './dist/' : '') + process.env.dbName,
     type: 'sqlite', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
     migrations:{
       path: './migrations',
+      pattern: /^[\w-]+\d+\.(ts|js)$/,
     }
   } as Options<IDatabaseDriver>;
