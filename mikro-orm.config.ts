@@ -5,7 +5,7 @@ import { Walk } from "./src/walks/entities/walk";
 
 export default {
     entities: [Dog, Walk, User], // no need for `entitiesTs` this way
-    dbName: (process.env.seed ? './dist/' : '') + process.env.dbName,
+    dbName: (process.env.seed ? './dist/' : '') + process.env.dbName || 'shellter.sqlite3',
     type: 'sqlite', // one of `mongo` | `mysql` | `mariadb` | `postgresql` | `sqlite`
     migrations:{
       path: './migrations',

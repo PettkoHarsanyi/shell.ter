@@ -26,9 +26,16 @@ export class WalksService {
     return walk;
   }
 
-  async findAll(walkDto: WalkDto, user: User): Promise<Walk[]> {
-      const walks = await this.walkRepository.findAll({populate: ['walker']});
-      return walks;
+  async findAll(walkDto: WalkDto, user: UserDto): Promise<Walk[]> {
+    const filters: FilterQuery<Walk> = {};
+
+    if(user.role === UserRole.Volunteer){
+      filters.walker = {id: user.id}
+    }
+    
+    return await this.walkRepository.find(filters, {
+      populate: ['walker','dog'],
+    });
   }
 
 

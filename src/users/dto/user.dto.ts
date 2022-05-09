@@ -1,6 +1,5 @@
 import { User, UserRole } from "../entity/user";
 
-
 export class UserDto{
     id?: number;
     name?: string;

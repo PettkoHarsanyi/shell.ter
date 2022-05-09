@@ -26,12 +26,12 @@ describe('DogsController', () => {
     expect(controller).toBeDefined();
   });
 
-  it("should give empty array when no issues have been created", ()=>{
+  it("should give empty array when no dogs have been created", ()=>{
     dogsService.findAll.mockReturnValue([]);
     expect(controller.findAll({})).resolves.toEqual([]);
   });   
   
-  it("should throw an error when the requested issue is missing", ()=>{
+  it("should throw an error when the requested dog is missing", ()=>{
     dogsService.findOne.mockReturnValue(undefined);
     expect(controller.findOne(1)).rejects.toThrow();
   });    

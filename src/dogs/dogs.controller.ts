@@ -1,5 +1,7 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { Roles } from '../auth/roles';
+import { UserParam } from '../auth/user-param.decorator';
+import { UserDto } from '../users/dto/user.dto';
 import { UserRole } from '../users/entity/user';
 import { WalkDto } from '../walks/dto/walk.dto';
 import { DogsService } from './dogs.service';
@@ -11,7 +13,9 @@ export class DogsController {
     constructor(private _dogsService: DogsService){}
     
     @Get()
-    async findAll(@Query() dogDto?: DogDto): Promise<DogDto[]> {
+    async findAll(
+        @Query() dogDto: DogDto,
+        ): Promise<DogDto[]> {
         const dogs =  await this._dogsService.findAll(dogDto);
         return dogs.map((dog)=> new DogDto(dog));
     }
